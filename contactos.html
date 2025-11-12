@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Immerse - Contactos</title>
+  <link rel="icon" href="logocima.png" type="image/png">
+  <link href="https://fonts.cdnfonts.com/css/high-tide" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Mensagem de sucesso animada (sem fundo) */
+    .success-message {
+      position: fixed;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-family: 'High Tide', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+      opacity: 0;
+      transition: all 0.8s ease;
+      z-index: 9999;
+    }
+
+    .success-message.show {
+      top: 80px; /* aparece por cima de "Contacta-nos" */
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="Inicio.html">
+        <img src="logo2.png" alt="Logo Immerse">
+      </a>
+    </div>
+    <nav>
+      <a href="Inicio.html">Início</a>
+      <a href="filmes.html">Filmes</a>
+      <a href="contactos.html" class="active">Contactos</a>
+    </nav>
+  </header>
+
+  <div class="contact-form">
+    <h2>Contacta-nos</h2>
+    <form id="contactForm">
+      <div class="form-group">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      
+      <button type="submit" class="submit-btn">Enviar Mensagem</button>
+    </form>
+
+    <div id="formMessage"></div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Immerse. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    // Função para mostrar mensagem de sucesso (usada pelo script.js)
+    function showSuccessMessage(text) {
+      // Cria elemento da mensagem
+      const msg = document.createElement('div');
+      msg.className = 'success-message';
+      msg.textContent = text;
+      msg.style.color = '#00ff00';
+      document.body.appendChild(msg);
+
+      // Mostra (animação deslizar de cima)
+      setTimeout(() => msg.classList.add('show'), 100);
+
+      // Desaparece depois de 3.5 segundos
+      setTimeout(() => {
+        msg.classList.remove('show');
+        setTimeout(() => msg.remove(), 800);
+      }, 3500);
+    }
+
+    // Função para mostrar mensagem de erro (usada pelo script.js)
+    function showErrorMessage(text) {
+      // Cria elemento da mensagem
+      const msg = document.createElement('div');
+      msg.className = 'success-message';
+      msg.textContent = text;
+      msg.style.color = '#ff4444';
+      document.body.appendChild(msg);
+
+      // Mostra (animação deslizar de cima)
+      setTimeout(() => msg.classList.add('show'), 100);
+
+      // Desaparece depois de 3.5 segundos
+      setTimeout(() => {
+        msg.classList.remove('show');
+        setTimeout(() => msg.remove(), 800);
+      }, 3500);
+    }
+  </script>
+  
+  <!-- Carregar script.js que contém a lógica de envio de emails -->
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1047 @@
+/* Reset e configurações base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'High Tide', sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  text-align: center;
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+
+/* Header unificado */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: #111;
+  box-shadow: 0 2px 10px rgba(0, 255, 255, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  filter: drop-shadow(0 0 8px #0ff);
+  transition: filter 0.3s ease;
+}
+
+.logo img:hover {
+  filter: drop-shadow(0 0 12px #0ff) drop-shadow(0 0 20px #0ff);
+}
+
+/* Navegação melhorada */
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+nav a:hover {
+  color: #0ff;
+  background: rgba(0, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+nav a.active {
+  color: #0ff;
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+/* Seção sobre */
+.about {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+}
+
+.about h2 {
+  font-size: 2.2em;
+  color: #0ff;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.about p {
+  font-size: 1.1em;
+  line-height: 1.7;
+  color: #e0e0e0;
+  margin-bottom: 15px;
+}
+
+.futuristic-text {
+  color: #0ff;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+/* Título novidades */
+.novidades {
+  margin: 2cm 0 1cm 0;
+  font-size: 2.5em;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+}
+
+/* Seção de vídeo */
+.video-section {
+  margin: 40px 0;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  position: relative;
+  z-index: 1;
+  clear: both;
+}
+
+/* Responsividade da seção de vídeo */
+@media (max-width: 768px) {
+  .video-section {
+    margin: 30px 0;
+    padding: 0 15px;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-section {
+    margin: 20px 0;
+    padding: 0 10px;
+    min-height: 250px;
+  }
+}
+
+/* Carrossel de vídeo */
+.video-carousel {
+  max-width: 800px;
+  width: 100%;
+  background: #111;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.carousel-video {
+  display: none;
+  width: 100%;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+}
+
+.carousel-video.active {
+  display: block;
+}
+
+/* Responsividade do carrossel de vídeo */
+@media (max-width: 768px) {
+  .video-carousel {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+  .carousel-video {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-video {
+    height: 250px;
+  }
+}
+
+/* Grid de filmes */
+.movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.movie-card {
+  background: #111;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  height: 450px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.2);
+  border-color: rgba(0, 255, 255, 0.3);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover img {
+  transform: scale(1.05);
+}
+
+.movie-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  font-size: 1.1em;
+  color: #0ff;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  font-weight: bold;
+}
+
+/* Botões de categoria */
+.category-btn {
+  margin: 20px 0;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  border-radius: 25px;
+  border: 2px solid #0ff;
+  background: transparent;
+  color: #0ff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.category-btn:hover {
+  background: #0ff;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 20px 50px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.categories button {
+  padding: 10px 15px;
+  font-size: 0.9em;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  background: rgba(0, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.categories button:hover {
+  background: rgba(0, 255, 255, 0.2);
+  border-color: #0ff;
+  transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+  margin-top: 60px;
+  padding: 30px;
+  background: #111;
+  color: #888;
+  font-size: 0.9em;
+  border-top: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+/* Banner de cookies */
+.cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  font-size: 0.9em;
+  display: none;
+  gap: 15px;
+  align-items: center;
+  z-index: 1000;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.cookie-banner button {
+  background: #0ff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #000;
+}
+
+.cookie-banner button:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+/* Formulário de contactos */
+.contact-form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.contact-form h2 {
+  color: #0ff;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #0ff;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px; /* Evita zoom automático no iOS */
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0ff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background: #0ff;
+  color: #000;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.submit-btn:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Responsividade melhorada */
+@media (max-width: 1200px) {
+  .movies {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  /* Header responsivo - empilha logo e navegação */
+  header {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  /* Logo mais pequeno em mobile */
+  .logo img {
+    height: 40px;
+  }
+  
+  /* Navegação em linha única */
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  nav a {
+    padding: 10px 15px;
+    font-size: 1em;
+  }
+  
+  /* Seção sobre com margens reduzidas */
+  .about {
+    margin: 20px 15px;
+    padding: 25px 20px;
+    border-radius: 10px;
+  }
+  
+  .about h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+  }
+  
+  .about p {
+    font-size: 1em;
+    line-height: 1.6;
+  }
+  
+  /* Grid de filmes adaptado */
+  .movies {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px 15px;
+  }
+  
+  .movie-card {
+    height: 350px;
+  }
+  
+  /* Formulário de contactos responsivo */
+  .contact-form {
+    margin: 20px 15px;
+    padding: 25px 20px;
+    border-radius: 10px;
+  }
+  
+  .contact-form h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 15px;
+    font-size: 16px; /* Evita zoom no iOS */
+  }
+  
+  .submit-btn {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    width: 100%;
+  }
+  
+  /* Categorias em grid responsivo */
+  .categories {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    padding: 15px 20px;
+  }
+  
+  .categories button {
+    padding: 12px 10px;
+    font-size: 0.85em;
+  }
+  
+  /* Título novidades menor */
+  .novidades {
+    font-size: 2em;
+    margin: 1.5cm 0 0.8cm 0;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Header ainda mais compacto */
+  header {
+    padding: 10px 15px;
+    gap: 10px;
+  }
+  
+  .logo img {
+    height: 35px;
+  }
+  
+  nav {
+    gap: 10px;
+  }
+  
+  nav a {
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
+  
+  /* Seção sobre mais compacta */
+  .about {
+    margin: 15px 10px;
+    padding: 20px 15px;
+  }
+  
+  .about h2 {
+    font-size: 1.6em;
+  }
+  
+  .about p {
+    font-size: 0.95em;
+  }
+  
+  /* Título novidades menor */
+  .novidades {
+    font-size: 1.8em;
+    margin: 1cm 0 0.5cm 0;
+  }
+  
+  /* Grid de filmes em coluna única */
+  .movies {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 15px 10px;
+  }
+  
+  .movie-card {
+    height: 300px;
+    border-radius: 10px;
+  }
+  
+  .movie-title {
+    font-size: 1em;
+    padding: 10px;
+  }
+  
+  /* Formulário de contactos otimizado */
+  .contact-form {
+    margin: 15px 10px;
+    padding: 20px 15px;
+  }
+  
+  .contact-form h2 {
+    font-size: 1.6em;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+  
+  .submit-btn {
+    padding: 12px 25px;
+    font-size: 1em;
+  }
+  
+  /* Categorias em 2 colunas */
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 10px 15px;
+  }
+  
+  .categories button {
+    padding: 10px 8px;
+    font-size: 0.8em;
+    border-radius: 15px;
+  }
+  
+  /* Footer responsivo */
+  footer {
+    margin-top: 40px;
+    padding: 20px 15px;
+    font-size: 0.8em;
+  }
+  
+  /* Banner de cookies responsivo */
+  .cookie-banner {
+    left: 10px;
+    right: 10px;
+    transform: none;
+    flex-direction: column;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 0.85em;
+  }
+  
+  .cookie-banner button {
+    padding: 10px 20px;
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+}
+
+/* Dispositivos muito pequenos (iPhone SE, etc.) */
+@media (max-width: 360px) {
+  /* Ajustes adicionais para ecrãs muito pequenos */
+  .about {
+    margin: 10px 5px;
+    padding: 15px 10px;
+  }
+  
+  .about h2 {
+    font-size: 1.4em;
+  }
+  
+  .novidades {
+    font-size: 1.6em;
+  }
+  
+  .movies {
+    padding: 10px 5px;
+  }
+  
+  .movie-card {
+    height: 280px;
+  }
+  
+  .contact-form {
+    margin: 10px 5px;
+    padding: 15px 10px;
+  }
+  
+  .categories {
+    padding: 8px 10px;
+  }
+  
+  .categories button {
+    padding: 8px 6px;
+    font-size: 0.75em;
+  }
+}
+
+/* Container principal do filme */
+.movie-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #111;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+
+  /* Alinha imagem e texto lado a lado */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+
+  /* Responsividade */
+  flex-wrap: wrap;
+}
+
+/* Imagem do filme */
+.movie-container img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+/* Texto à direita da imagem */
+.movie-text {
+  max-width: 500px;
+  text-align: left;
+}
+
+/* Título do filme */
+.movie-title {
+  font-family: 'High Tide', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  color: #00bcd4;
+}
+
+/* Descrição */
+.movie-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #ddd;
+}
+
+/* Botão de compra */
+.buy-button {
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  display: block;
+  margin: 0 auto;
+}
+
+.buy-button:hover {
+  background-color: #0097a7;
+  transform: scale(1.05);
+}
+
+/* Preço */
+.price {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00e676;
+  text-align: center;
+}
+
+/* Ajuste para dispositivos móveis - Movie Container */
+@media (max-width: 768px) {
+  .movie-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    margin: 20px 10px;
+  }
+
+  .movie-container img {
+    max-width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .movie-text {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .movie-title {
+    font-size: 1.8rem;
+  }
+
+  .movie-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-container {
+    padding: 15px;
+    margin: 15px 5px;
+  }
+
+  .movie-container img {
+    max-width: 90%;
+  }
+
+  .movie-title {
+    font-size: 1.5rem;
+  }
+
+  .movie-description {
+    font-size: 0.9rem;
+  }
+}
+.movie-title {
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    font-weight: bold;
+    text-align: center;
+}
+/* Container central da finalização de compra */
+.checkout-container {
+  max-width: 600px;
+  margin: 100px auto 50px auto;
+  background-color: #111;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+  text-align: center;
+  color: #fff;
+}
+
+/* Título */
+.checkout-container h1 {
+  font-family: 'High Tide', cursive;
+  color: #00bcd4;
+  margin-bottom: 20px;
+}
+
+/* Texto da compra */
+.checkout-container p {
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* Botão de confirmação */
+.confirm-button {
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.confirm-button:hover {
+  background-color: #0097a7;
+  transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .checkout-container {
+    margin: 80px 20px;
+    padding: 30px;
+  }
+}
+/* Container principal do checkout */
+.checkout-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 50px;
+  max-width: 1000px;
+  margin: 20px auto; /* próximo da barra superior */
+  background-color: #111;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
+  color: #fff;
+}
+
+/* Lado esquerdo: imagem do filme */
+.checkout-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout-poster {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 188, 212, 0.4);
+}
+
+/* Lado direito: formulário */
+.checkout-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Inputs e select */
+.checkout-form input,
+.checkout-form select {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  background-color: #222;
+  color: #fff;
+}
+
+/* Botão confirmar */
+.confirm-button {
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.confirm-button:hover {
+  background-color: #0097a7;
+  transform: scale(1.05);
+}
+
+/* Mensagem de agradecimento */
+.thank-you-message {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #00bcd4;
+  color: #000;
+  font-size: 1.2rem;
+  padding: 20px 40px;
+  border-radius: 20px;
+  display: none;
+  z-index: 10000;
+  text-align: center;
+}
+
+/* Responsividade - Checkout Container */
+@media (max-width: 768px) {
+  .checkout-container {
+    flex-direction: column;
+    padding: 20px;
+    margin: 20px 10px;
+    gap: 30px;
+  }
+
+  .checkout-left,
+  .checkout-right {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .checkout-poster {
+    max-width: 70%;
+    margin-bottom: 20px;
+  }
+
+  .checkout-form {
+    max-width: 100%;
+  }
+
+  .checkout-form input,
+  .checkout-form select {
+    font-size: 16px; /* Evita zoom no iOS */
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-container {
+    padding: 15px;
+    margin: 15px 5px;
+    gap: 20px;
+  }
+
+  .checkout-poster {
+    max-width: 85%;
+  }
+
+  .checkout-form input,
+  .checkout-form select {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .confirm-button {
+    padding: 12px 25px;
+    font-size: 1em;
+  }
+}
+
+/* Mensagem central de festa */
+.celebration-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 188, 212, 0.9);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 30px 50px;
+  border-radius: 20px;
+  display: none; /* começa escondida */
+  z-index: 10000;
+  box-shadow: 0 0 20px #00bcd4;
+}
+
+/* Container de confetes */
+#confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+/* Estilo dos confetes */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ff0, #f0f, #0ff, #0f0; /* cores variadas */
+  opacity: 0.8;
+  border-radius: 50%;
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+

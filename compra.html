@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finalize a Compra - Immerse</title>
+  <link rel="icon" href="logocima.png" type="image/png">
+  <link href="https://fonts.cdnfonts.com/css/high-tide" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="compra.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="Inicio.html">
+        <img src="logo2.png" alt="Logo Immerse">
+      </a>
+    </div>
+    <nav>
+      <a href="Inicio.html">Início</a>
+      <a href="filmes.html">Filmes</a>
+      <a href="contactos.html">Contactos</a>
+    </nav>
+  </header>
+
+ <main>
+  <div class="checkout-container">
+
+    <!-- Imagem do filme à esquerda -->
+    <div class="checkout-left">
+      <img src="https://www.impawards.com/2010/posters/inception_ver3_xlg.jpg" 
+           alt="Além das Portas" class="checkout-poster">
+    </div>
+
+    <!-- Formulário à direita -->
+    <div class="checkout-right">
+      <form id="purchase-form" class="checkout-form">
+        <input type="text" name="nome" placeholder="Nome" required>
+        <input type="tel" name="contacto" placeholder="Contacto" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <select name="pagamento" required>
+          <option value="">Método de Pagamento</option>
+          <option value="cartao">Cartão de Crédito/Débito</option>
+          <option value="paypal">PayPal</option>
+          <option value="mbway">MB Way</option>
+        </select>
+        <button class="confirm-button">Finalizar compra</button>
+
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<!-- Mensagem de festa -->
+<div id="celebration-message" class="celebration-message">
+  🎉 Obrigada por comprares "Além das Portas"! 🎉<br>
+  Dentro de 30s estará no teu email.
+</div>
+
+<!-- Container para confetes -->
+<div id="confetti-container"></div>
+
+
+
+
+<!-- Mensagem de agradecimento -->
+<div id="thank-you-message" class="thank-you-message">
+  Obrigada por comprares "Além das Portas". Dentro de 30s irá estar no teu email.
+</div>
+
+
+  <footer>
+    <p>&copy; 2025 Immerse. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
