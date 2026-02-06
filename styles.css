@@ -108,6 +108,119 @@ nav a.active {
   text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
 }
 
+/* Trailer Interativo (apenas mobile) */
+.trailer-container-mobile {
+  display: none; /* Escondido por padrão, só aparece em mobile */
+  margin: 30px 0;
+  max-width: 100%;
+  position: relative;
+  padding: 0 15px;
+}
+
+.trailer-placeholder {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+  border-radius: 15px;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.trailer-placeholder:hover {
+  border-color: rgba(0, 255, 255, 0.6);
+  transform: scale(1.02);
+}
+
+.trailer-icon {
+  font-size: 4em;
+  color: #0ff;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+  margin-bottom: 10px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.trailer-text {
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.trailer-video-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-trailer {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 2em;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10001;
+  transition: all 0.3s ease;
+}
+
+.close-trailer:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: rotate(90deg);
+}
+
+.trailer-rotation-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #0ff;
+  font-size: 1.5em;
+  text-align: center;
+  z-index: 10002;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  display: none;
+}
+
+.trailer-video-fullscreen video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Mostrar trailer apenas em mobile */
+@media (max-width: 768px) {
+  .trailer-container-mobile {
+    display: block;
+  }
+}
+
 /* Título novidades */
 .novidades {
   margin: 2cm 0 1cm 0;
@@ -136,16 +249,21 @@ nav a.active {
 @media (max-width: 768px) {
   .video-section {
     margin: 30px 0;
-    padding: 0 15px;
+    padding: 0;
     min-height: 300px;
   }
 }
 
 @media (max-width: 480px) {
   .video-section {
-    margin: 20px 0;
-    padding: 0 10px;
+    margin: 25px 0;
+    padding: 0;
     min-height: 250px;
+  }
+  
+  .trailer-container-mobile {
+    margin: 25px 0;
+    padding: 0 12px;
   }
 }
 
@@ -416,53 +534,104 @@ footer {
 }
 
 @media (max-width: 768px) {
-  /* Header responsivo - empilha logo e navegação */
-  header {
-    padding: 15px 20px;
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
+  /* Margens gerais muito maiores para centralizar conteúdo */
+  body {
+    padding: 0 25px 30px 25px;
   }
   
-  /* Logo mais pequeno em mobile */
+  main {
+    margin-top: 50px; /* Margem superior muito maior em relação à navbar */
+  }
+  
+  /* Header responsivo - logo no centro, menu em baixo */
+  header {
+    padding: 15px 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    margin-bottom: 0;
+  }
+  
+  /* Logo centralizado */
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
   .logo img {
     height: 40px;
   }
   
-  /* Navegação em linha única */
+  /* Navegação em baixo do logo - sempre em linha */
   nav {
-    flex-wrap: wrap;
+    width: 100%;
+    display: flex;
     justify-content: center;
-    gap: 15px;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap; /* Nunca quebrar linha */
   }
   
   nav a {
-    padding: 10px 15px;
-    font-size: 1em;
+    padding: 8px 12px;
+    font-size: 0.95em;
+    white-space: nowrap; /* Texto nunca quebra */
+    flex-shrink: 1; /* Permite encolher se necessário */
   }
   
-  /* Seção sobre com margens reduzidas */
+  /* Seção sobre com margens aumentadas e texto reduzido */
   .about {
-    margin: 20px 15px;
+    margin: 40px 0 25px 0;
     padding: 25px 20px;
     border-radius: 10px;
+    max-height: 200px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .about::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(transparent, #0a0a0a);
   }
   
   .about h2 {
     font-size: 1.8em;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   
   .about p {
-    font-size: 1em;
-    line-height: 1.6;
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin-bottom: 8px;
   }
   
-  /* Grid de filmes adaptado */
+  .about p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Grid de filmes adaptado - Novidades: 2 filmes lado a lado */
+  .novidades + .movies {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px 0;
+    margin: 0;
+  }
+  
+  /* Grid de filmes padrão */
   .movies {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    padding: 20px 15px;
+    padding: 20px 0;
+    margin: 0;
   }
   
   .movie-card {
@@ -471,7 +640,7 @@ footer {
   
   /* Formulário de contactos responsivo */
   .contact-form {
-    margin: 20px 15px;
+    margin: 30px 0 20px 0;
     padding: 25px 20px;
     border-radius: 10px;
   }
@@ -493,11 +662,57 @@ footer {
     width: 100%;
   }
   
-  /* Categorias em grid responsivo */
+    /* Botão Escolher Categoria (apenas mobile) */
+  .choose-category-mobile {
+    display: block; /* Mostrar apenas em mobile */
+    text-align: center;
+    margin: 30px 0 20px 0;
+    padding: 0 15px;
+  }
+  
+  /* Esconder categorias por padrão em desktop */
+  @media (min-width: 769px) {
+    .choose-category-mobile {
+      display: none;
+    }
+    .categories {
+      display: grid;
+    }
+  }
+  
+  .category-toggle-btn {
+    background: linear-gradient(135deg, #0ff 0%, #00bcd4 100%);
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+  }
+  
+  .category-toggle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.5);
+  }
+  
+  .category-toggle-btn.active {
+    background: linear-gradient(135deg, #00bcd4 0%, #0ff 100%);
+  }
+  
+  /* Categorias em grid responsivo - escondidas por padrão em mobile */
   .categories {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 10px;
-    padding: 15px 20px;
+    padding: 15px 0;
+    margin: 0;
+    display: none; /* Escondido por padrão em mobile */
+  }
+  
+  .categories.show {
+    display: grid; /* Mostrar quando ativo */
   }
   
   .categories button {
@@ -505,18 +720,89 @@ footer {
     font-size: 0.85em;
   }
   
+  .clear-btn-mobile {
+    background: #ff4444 !important;
+    color: #fff !important;
+    grid-column: 1 / -1; /* Ocupa toda a largura */
+    margin-top: 10px;
+  }
+  
   /* Título novidades menor */
   .novidades {
     font-size: 2em;
-    margin: 1.5cm 0 0.8cm 0;
+    margin: 40px 0 25px 0;
+    padding: 0;
+  }
+  
+  /* Grid de filmes adaptado - Novidades: 2 filmes lado a lado */
+  .novidades + .movies {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Grid de filmes padrão */
+  .movies {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Formulário de contactos responsivo */
+  .contact-form {
+    margin: 40px 0 25px 0;
+    padding: 25px 20px;
+    border-radius: 10px;
+  }
+  
+  /* Botão Escolher Categoria */
+  .choose-category-mobile {
+    margin: 40px 0 25px 0;
+    padding: 0;
+  }
+  
+  /* Categorias */
+  .categories {
+    padding: 15px 0;
+    margin: 0;
+  }
+  
+  /* Trailer */
+  .trailer-container-mobile {
+    margin: 40px 0;
+    padding: 0;
+  }
+  
+  /* Video section */
+  .video-section {
+    margin: 40px 0;
   }
 }
 
 @media (max-width: 480px) {
-  /* Header ainda mais compacto */
+  /* Margens gerais muito maiores para centralizar conteúdo */
+  body {
+    padding: 0 20px 30px 20px;
+  }
+  
+  main {
+    margin-top: 40px; /* Margem superior muito maior em relação à navbar */
+  }
+  
+  /* Header ainda mais compacto - logo no centro, menu em baixo */
   header {
-    padding: 10px 15px;
-    gap: 10px;
+    padding: 10px 8px;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 0;
+  }
+  
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   
   .logo img {
@@ -524,17 +810,22 @@ footer {
   }
   
   nav {
-    gap: 10px;
+    width: 100%;
+    gap: 6px;
+    flex-wrap: nowrap; /* Nunca quebrar linha */
+    justify-content: center;
   }
   
   nav a {
-    padding: 8px 12px;
-    font-size: 0.9em;
+    padding: 8px 10px;
+    font-size: 0.85em;
+    white-space: nowrap; /* Texto nunca quebra */
+    flex-shrink: 1; /* Permite encolher se necessário */
   }
   
   /* Seção sobre mais compacta */
   .about {
-    margin: 15px 10px;
+    margin: 35px 0 20px 0;
     padding: 20px 15px;
   }
   
@@ -549,14 +840,16 @@ footer {
   /* Título novidades menor */
   .novidades {
     font-size: 1.8em;
-    margin: 1cm 0 0.5cm 0;
+    margin: 35px 0 20px 0;
+    padding: 0;
   }
   
-  /* Grid de filmes em coluna única */
+  /* Grid de filmes - 2 filmes lado a lado por padrão */
   .movies {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    padding: 15px 10px;
+    padding: 0;
+    margin: 0;
   }
   
   .movie-card {
@@ -571,8 +864,36 @@ footer {
   
   /* Formulário de contactos otimizado */
   .contact-form {
-    margin: 15px 10px;
+    margin: 35px 0 20px 0;
     padding: 20px 15px;
+  }
+  
+  /* Botão Escolher Categoria */
+  .choose-category-mobile {
+    margin: 35px 0 20px 0;
+    padding: 0;
+  }
+  
+  /* Categorias */
+  .categories {
+    padding: 10px 0;
+    margin: 0;
+  }
+  
+  /* Trailer */
+  .trailer-container-mobile {
+    margin: 35px 0;
+    padding: 0;
+  }
+  
+  /* Video section */
+  .video-section {
+    margin: 35px 0;
+  }
+  
+  /* Movie container */
+  .movie-container {
+    margin: 35px 0 20px 0;
   }
   
   .contact-form h2 {
@@ -604,7 +925,8 @@ footer {
   .categories {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-    padding: 10px 15px;
+    padding: 10px 0;
+    margin: 0;
   }
   
   .categories button {
@@ -615,8 +937,8 @@ footer {
   
   /* Footer responsivo */
   footer {
-    margin-top: 40px;
-    padding: 20px 15px;
+    margin-top: 50px;
+    padding: 20px 0;
     font-size: 0.8em;
   }
   
@@ -641,6 +963,33 @@ footer {
 /* Dispositivos muito pequenos (iPhone SE, etc.) */
 @media (max-width: 360px) {
   /* Ajustes adicionais para ecrãs muito pequenos */
+  /* Header - logo no centro, menu em baixo */
+  header {
+    padding: 8px 5px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Navegação sempre em linha, mesmo em ecrãs muito pequenos */
+  nav {
+    width: 100%;
+    gap: 4px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  
+  nav a {
+    padding: 6px 8px;
+    font-size: 0.8em;
+    white-space: nowrap;
+  }
+  
   .about {
     margin: 10px 5px;
     padding: 15px 10px;
@@ -694,6 +1043,41 @@ footer {
 
   /* Responsividade */
   flex-wrap: wrap;
+}
+
+/* Desktop - mostrar apenas imagem e texto lado a lado */
+@media (min-width: 769px) {
+  /* Esconder versão mobile */
+  .movie-image-wrapper {
+    display: none;
+  }
+  
+  .movie-buy-section {
+    display: none;
+  }
+  
+  /* Mostrar versão desktop */
+  .movie-image-desktop {
+    max-width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+    display: block;
+  }
+  
+  .movie-text {
+    display: block;
+  }
+}
+
+/* Mobile - esconder versão desktop */
+@media (max-width: 768px) {
+  .movie-image-desktop {
+    display: none;
+  }
+  
+  .movie-text {
+    display: none;
+  }
 }
 
 /* Imagem do filme */
@@ -759,34 +1143,136 @@ footer {
 @media (max-width: 768px) {
   .movie-container {
     flex-direction: column;
-    text-align: center;
-    padding: 20px;
-    margin: 20px 10px;
-  }
-
-  .movie-container img {
-    max-width: 80%;
-    margin-bottom: 20px;
-  }
-
-  .movie-text {
-    text-align: center;
+    padding: 0;
+    margin: 0;
+    gap: 0;
     max-width: 100%;
   }
 
-  .movie-title {
-    font-size: 1.8rem;
+  /* Wrapper da imagem com overlay de texto */
+  .movie-image-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    overflow: hidden;
   }
 
-  .movie-description {
-    font-size: 1rem;
+  /* Imagem blurred como fundo */
+  .movie-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(8px);
+    transform: scale(1.1); /* Aumenta um pouco para cobrir áreas do blur */
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /* Overlay escuro para melhor legibilidade */
+  .movie-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+  /* Texto sobreposto sobre a imagem */
+  .movie-text-overlay {
+    position: relative;
+    z-index: 2;
+    padding: 30px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .movie-title-overlay {
+    color: #00bcd4;
+    font-family: 'High Tide', cursive;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+  }
+
+  .movie-description-overlay {
+    color: #fff;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  /* Esconder texto desktop em mobile */
+  .movie-text {
+    display: none;
+  }
+
+  /* Botão e preço - container separado em baixo da imagem */
+  .movie-buy-section {
+    width: 100%;
+    padding: 25px 20px;
+    background: #0a0a0a;
+    text-align: center;
+    display: block;
+  }
+
+  .movie-buy-section .buy-button {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 15px auto;
+    display: block;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #00bcd4;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .movie-buy-section .buy-button:hover {
+    background-color: #0097a7;
+    transform: scale(1.05);
+  }
+
+  .movie-buy-section .price {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00e676;
+    margin-top: 10px;
+  }
+}
+
+/* Esconder secção de compra mobile em desktop */
+@media (min-width: 769px) {
+  .movie-buy-section {
+    display: none;
+  }
+  
+  .movie-text-overlay {
+    display: none;
+  }
+  
+  .movie-image-wrapper {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
   .movie-container {
-    padding: 15px;
-    margin: 15px 5px;
+    padding: 0;
+    margin: 25px 0 15px 0;
   }
 
   .movie-container img {

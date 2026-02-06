@@ -26,22 +26,37 @@
 
   <main>
   <div class="movie-container">
-    <img src="https://www.impawards.com/2010/posters/inception_ver3_xlg.jpg" alt="Além das Portas">
+    <!-- Versão Mobile: Imagem blurred com texto sobreposto -->
+    <div class="movie-image-wrapper">
+      <img src="https://www.impawards.com/2010/posters/inception_ver3_xlg.jpg" alt="Além das Portas" class="movie-poster">
+      <div class="movie-text-overlay">
+        <h1 class="movie-title-overlay">
+          Além das Portas
+        </h1>
+        <p class="movie-description-overlay">
+          No coração de um hospital abandonado, o espectador desperta em um corredor frio e sombrio. À sua frente, dois caminhos surgem: um corredor escuro e silencioso, outro levemente iluminado, cada um repleto de sons inquietantes e obstáculos inesperados. Vozes enigmáticas guiam ou confundem, enquanto aparições perturbadoras surgem na visão periférica, aumentando a tensão. O desfecho depende das escolhas: fuga pela porta para a noite silenciosa, encontro com pacientes aterrorizantes, ou a revelação final de que o espectador é, na verdade, parte do próprio hospital, confrontando-se com sua própria identidade em meio ao medo e à incerteza.
+        </p>
+      </div>
+    </div>
+
+    <!-- Versão Desktop: Imagem e texto lado a lado -->
+    <img src="https://www.impawards.com/2010/posters/inception_ver3_xlg.jpg" alt="Além das Portas" class="movie-image-desktop">
 
     <div class="movie-text">
-      <!-- Título centralizado -->
       <h1 style="text-align: center; color: #00bcd4; font-family: 'High Tide', cursive; margin-bottom: 20px;">
         Além das Portas
       </h1>
-
       <p class="movie-description">
         No coração de um hospital abandonado, o espectador desperta em um corredor frio e sombrio. À sua frente, dois caminhos surgem: um corredor escuro e silencioso, outro levemente iluminado, cada um repleto de sons inquietantes e obstáculos inesperados. Vozes enigmáticas guiam ou confundem, enquanto aparições perturbadoras surgem na visão periférica, aumentando a tensão. O desfecho depende das escolhas: fuga pela porta para a noite silenciosa, encontro com pacientes aterrorizantes, ou a revelação final de que o espectador é, na verdade, parte do próprio hospital, confrontando-se com sua própria identidade em meio ao medo e à incerteza.
       </p>
-
       <button class="buy-button" onclick="location.href='compra.html'">Comprar</button>
-<div class="price" style="color: #ffffff;">35€</div>
+      <div class="price" style="color: #ffffff;">35€</div>
+    </div>
 
-
+    <!-- Secção de compra para mobile (em baixo da imagem) -->
+    <div class="movie-buy-section">
+      <button class="buy-button" onclick="location.href='compra.html'">Comprar</button>
+      <div class="price">35€</div>
     </div>
   </div>
 </main>

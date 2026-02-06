@@ -34,6 +34,22 @@
     </p>
   </section>
 
+  <!-- Trailer Interativo (apenas mobile) -->
+  <div class="trailer-container-mobile" id="trailerContainer">
+    <div class="trailer-placeholder" id="trailerPlaceholder">
+      <div class="trailer-icon">▶</div>
+      <p class="trailer-text">Clica para ver</p>
+    </div>
+    <div class="trailer-video-fullscreen" id="trailerVideoFullscreen" style="display: none;">
+      <button class="close-trailer" id="closeTrailer">✕</button>
+      <div class="trailer-rotation-message">Vira o telemóvel para ver o vídeo</div>
+      <video id="trailerVideo" controls>
+        <source src="" type="video/mp4">
+        O teu browser não suporta vídeo.
+      </video>
+    </div>
+  </div>
+
   <div id="novidades" class="novidades">Novidades</div>
 
  <section class="movies">

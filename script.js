@@ -17,34 +17,154 @@ document.addEventListener('DOMContentLoaded', function() {
     });
  
     // ===============================
-    // Sistema de cookies
+    // Sistema de cookies - Obrigatório em mobile
     // ===============================
     const cookieBanner = document.getElementById('cookie-banner');
     const acceptBtn = document.getElementById('accept-cookies');
+    const isMobileDevice = window.innerWidth <= 768;
+    
     if (cookieBanner && acceptBtn) {
         if (!localStorage.getItem('cookiesAccepted')) {
             cookieBanner.style.display = 'flex';
+            
+            // Em mobile, bloquear interação até aceitar cookies
+            if (isMobileDevice) {
+                // Criar overlay que bloqueia a página
+                const overlay = document.createElement('div');
+                overlay.id = 'cookie-overlay';
+                overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 9998;';
+                document.body.appendChild(overlay);
+                
+                // Bloquear scroll
+                document.body.style.overflow = 'hidden';
+            }
         }
+        
         acceptBtn.addEventListener('click', function() {
             localStorage.setItem('cookiesAccepted', 'true');
             cookieBanner.style.display = 'none';
+            
+            // Remover overlay e desbloquear scroll em mobile
+            if (isMobileDevice) {
+                const overlay = document.getElementById('cookie-overlay');
+                if (overlay) overlay.remove();
+                document.body.style.overflow = '';
+            }
         });
     }
  
     // ===============================
+    // Trailer Interativo (apenas mobile)
+    // ===============================
+    const trailerPlaceholder = document.getElementById('trailerPlaceholder');
+    const trailerVideoFullscreen = document.getElementById('trailerVideoFullscreen');
+    const trailerVideo = document.getElementById('trailerVideo');
+    const closeTrailer = document.getElementById('closeTrailer');
+    const rotationMessage = document.querySelector('.trailer-rotation-message');
+    
+    if (trailerPlaceholder && trailerVideoFullscreen) {
+        // Detectar orientação do dispositivo
+        function checkOrientation() {
+            if (window.innerHeight > window.innerWidth) {
+                // Portrait - mostrar mensagem
+                rotationMessage.style.display = 'block';
+            } else {
+                // Landscape - esconder mensagem e mostrar vídeo
+                rotationMessage.style.display = 'none';
+            }
+        }
+        
+        // Abrir trailer em fullscreen
+        trailerPlaceholder.addEventListener('click', function() {
+            if (window.innerWidth <= 768) { // Apenas em mobile
+                trailerVideoFullscreen.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                checkOrientation();
+                
+                // Adicionar URL do vídeo aqui (substituir quando tiveres)
+                // trailerVideo.src = 'caminho/para/video.mp4';
+            }
+        });
+        
+        // Fechar trailer
+        if (closeTrailer) {
+            closeTrailer.addEventListener('click', function() {
+                trailerVideoFullscreen.style.display = 'none';
+                document.body.style.overflow = '';
+                if (trailerVideo) {
+                    trailerVideo.pause();
+                    trailerVideo.currentTime = 0;
+                }
+            });
+        }
+        
+        // Verificar orientação quando muda
+        window.addEventListener('orientationchange', checkOrientation);
+        window.addEventListener('resize', checkOrientation);
+    }
+
+    // ===============================
     // Mostrar categoria específica
     // ===============================
+    const isMobile = window.innerWidth <= 768;
+    const categoryToggleBtn = document.getElementById('categoryToggleBtn');
+    const categoriesSection = document.getElementById('categoriesSection');
+    const clearBtnMobile = document.getElementById('clearBtnMobile');
+    
     window.showCategory = function(category) {
         const sections = document.querySelectorAll('.movies');
         sections.forEach(sec => sec.style.display = 'none');
         const targetSection = document.getElementById(category);
         if (targetSection) targetSection.style.display = 'grid';
+        
+        // Em mobile: esconder categorias, mostrar apenas botão limpar
+        if (isMobile && categoriesSection && clearBtnMobile) {
+            categoriesSection.classList.remove('show');
+            categoriesSection.style.display = 'none';
+            clearBtnMobile.style.display = 'block';
+            if (categoryToggleBtn) {
+                categoryToggleBtn.textContent = 'Escolher Categoria';
+                categoryToggleBtn.classList.remove('active');
+            }
+            
+            // Scroll para início da secção de filmes
+            setTimeout(() => {
+                const firstMovieSection = document.querySelector('.movies[style*="grid"], .movies:not([style*="none"])');
+                if (firstMovieSection) {
+                    firstMovieSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        }
     };
- 
+  
     window.showAllMovies = function() {
         const sections = document.querySelectorAll('.movies');
         sections.forEach(sec => sec.style.display = 'grid');
+        
+        // Em mobile: esconder botão limpar, mostrar botão escolher categoria
+        if (isMobile && clearBtnMobile && categoryToggleBtn) {
+            clearBtnMobile.style.display = 'none';
+            categoryToggleBtn.textContent = 'Escolher Categoria';
+            categoryToggleBtn.classList.remove('active');
+        }
     };
+    
+    // Toggle do botão Escolher Categoria (apenas mobile)
+    if (categoryToggleBtn && categoriesSection && isMobile) {
+        categoryToggleBtn.addEventListener('click', function() {
+            const isShowing = categoriesSection.classList.contains('show');
+            if (isShowing) {
+                categoriesSection.classList.remove('show');
+                categoriesSection.style.display = 'none';
+                this.classList.remove('active');
+            } else {
+                categoriesSection.classList.add('show');
+                categoriesSection.style.display = 'grid';
+                this.classList.add('active');
+                clearBtnMobile.style.display = 'none';
+            }
+        });
+    }
  
     // ===============================
     // Carrossel de vídeos
