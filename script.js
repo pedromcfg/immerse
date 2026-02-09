@@ -303,7 +303,7 @@ function setActiveNavLink() {
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === currentPage || 
-            (currentPage === '' && link.getAttribute('href') === 'Inicio.html')) {
+            (currentPage === '' && link.getAttribute('href') === 'index.html')) {
             link.classList.add('active');
         }
     });
