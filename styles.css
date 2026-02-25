@@ -102,6 +102,10 @@ nav a.active {
   margin-bottom: 15px;
 }
 
+.about-scroll-controls {
+  display: none;
+}
+
 .futuristic-text {
   color: #0ff;
   font-weight: bold;
@@ -595,7 +599,7 @@ footer {
   /* Seção sobre com margens aumentadas e texto reduzido */
   .about {
     margin: 40px 0 25px 0;
-    padding: 25px 20px;
+    padding: 25px 56px 25px 20px;
     border-radius: 10px;
     max-height: 200px;
     overflow-y: auto;
@@ -603,6 +607,8 @@ footer {
     position: relative;
     -ms-overflow-style: none; /* IE/Edge antigo */
     scrollbar-width: none;    /* Firefox */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
   
   .about::after {
@@ -617,6 +623,29 @@ footer {
 
   .about::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
+  }
+
+  .about-scroll-controls {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 2;
+  }
+
+  .about-scroll-controls button {
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 255, 255, 0.18);
+    color: #0ff;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.25);
   }
   
   .about h2 {
@@ -842,7 +871,7 @@ footer {
   /* Seção sobre mais compacta */
   .about {
     margin: 35px 0 20px 0;
-    padding: 20px 15px;
+    padding: 20px 52px 20px 15px;
   }
   
   .about h2 {
