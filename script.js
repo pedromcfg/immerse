@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Criar overlay que bloqueia a página
                 const overlay = document.createElement('div');
                 overlay.id = 'cookie-overlay';
-                overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 9998;';
+                // Mantem o overlay abaixo do banner de cookies para permitir clicar em "Aceitar".
+                overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 900;';
                 document.body.appendChild(overlay);
                 
                 // Bloquear scroll
