@@ -8,6 +8,115 @@
   <link href="https://fonts.cdnfonts.com/css/high-tide" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="compra.css">
+  <style>
+    /* ===== CHECKOUT CENTRALIZADO (estetica de compra2) ===== */
+    .checkout-container {
+      max-width: 1100px;
+      width: 95%;
+      margin: 120px auto;
+      display: flex;
+      gap: 50px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .checkout-left,
+    .checkout-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .checkout-left img {
+      max-width: 420px;
+      width: 100%;
+      border-radius: 16px;
+    }
+
+    .checkout-right {
+      border-radius: 16px;
+      padding: 0;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .checkout-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      max-width: 420px;
+      align-items: center;
+    }
+
+    .checkout-form input,
+    .checkout-form select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .confirm-button {
+      width: 100%;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      border-radius: 12px;
+      border: none;
+      background-color: #00bcd4;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .confirm-button:hover {
+      background-color: #0097a7;
+    }
+
+    /* ===== MENSAGEM POS-COMPRA "A CAIR" ===== */
+    .falling-message {
+      position: fixed;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 400px;
+      padding: 20px 25px;
+      background: transparent;
+      color: #00bcd4;
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      z-index: 9999;
+      box-shadow: none;
+      transition: top 0.8s ease, opacity 0.5s ease;
+      opacity: 0;
+    }
+
+    .falling-message.show {
+      top: 120px;
+      opacity: 1;
+    }
+
+    @media (max-width: 767px) {
+      .checkout-container {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .checkout-right,
+      .checkout-left img {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -53,21 +162,10 @@
   </div>
 </main>
 
-<!-- Mensagem de festa -->
-<div id="celebration-message" class="celebration-message">
-  🎉 Obrigada por comprares "Além das Portas"! 🎉<br>
-  Dentro de 30s estará no teu email.
-</div>
-
-<!-- Container para confetes -->
-<div id="confetti-container"></div>
-
-
-
-
-<!-- Mensagem de agradecimento -->
-<div id="thank-you-message" class="thank-you-message">
-  Obrigada por comprares "Além das Portas". Dentro de 30s irá estar no teu email.
+<!-- Mensagem pos-compra (estilo compra2) -->
+<div id="falling-message" class="falling-message">
+  Compra de <strong>"Além das Portas"</strong> concluída com sucesso!<br>
+  Receberá um email com todos os detalhes em instantes.
 </div>
 
 

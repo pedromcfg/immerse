@@ -321,33 +321,45 @@ function setActiveNavLink() {
     });
 }
 const form = document.getElementById('purchase-form');
+const fallingMessage = document.getElementById('falling-message');
 const celebrationMessage = document.getElementById('celebration-message');
 const confettiContainer = document.getElementById('confetti-container');
 
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
+if (form) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-  // Mostra a mensagem
-  celebrationMessage.style.display = 'block';
+    // Novo comportamento visual (compra2): mensagem "a cair"
+    if (fallingMessage) {
+      fallingMessage.classList.add('show');
+      setTimeout(() => {
+        fallingMessage.classList.remove('show');
+        form.reset();
+      }, 5000);
+      return;
+    }
 
-  // Cria confetes
-  for (let i = 0; i < 100; i++) {
-    const confetti = document.createElement('div');
-    confetti.classList.add('confetti');
-    confetti.style.left = Math.random() * window.innerWidth + 'px';
-    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    confetti.style.animationDuration = 2 + Math.random() * 3 + 's';
-    confettiContainer.appendChild(confetti);
+    // Fallback para comportamento antigo (caso exista na página)
+    if (celebrationMessage) {
+      celebrationMessage.style.display = 'block';
+    }
 
-    // Remove confete após a animação
-    setTimeout(() => confetti.remove(), 5000);
-  }
+    if (confettiContainer) {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        confetti.style.animationDuration = 2 + Math.random() * 3 + 's';
+        confettiContainer.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
 
-  // Esconde a mensagem após 3 segundos
-  setTimeout(() => {
-    celebrationMessage.style.display = 'none';
-  }, 3000);
+    setTimeout(() => {
+      if (celebrationMessage) celebrationMessage.style.display = 'none';
+    }, 3000);
 
-  // Limpa o formulário
-  form.reset();
-});
+    form.reset();
+  });
+}
