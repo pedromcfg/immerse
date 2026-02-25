@@ -278,6 +278,15 @@ nav a.active {
   border: 1px solid rgba(0, 255, 255, 0.2);
 }
 
+.video-player {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 460px;
+  border-radius: 15px;
+  background: #000;
+}
+
 .carousel-video {
   display: none;
   width: 100%;

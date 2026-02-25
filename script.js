@@ -181,16 +181,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
  
     // ===============================
-    // Efeito parallax suave
+    // Video fixo no layout (sem parallax)
     // ===============================
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelector('.video-carousel');
-        if (parallax) {
-            const speed = scrolled * 0.5;
-            parallax.style.transform = `translateY(${speed}px)`;
-        }
-    });
+    // O efeito de parallax foi removido para evitar que o player
+    // de video "deslize" ao fazer scroll.
  
     // ===============================
     // Animação de entrada para cards
