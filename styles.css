@@ -598,18 +598,25 @@ footer {
     padding: 25px 20px;
     border-radius: 10px;
     max-height: 200px;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
+    -ms-overflow-style: none; /* IE/Edge antigo */
+    scrollbar-width: none;    /* Firefox */
   }
   
   .about::after {
-    content: '';
+    content: none;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     height: 30px;
     background: linear-gradient(transparent, #0a0a0a);
+  }
+
+  .about::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
   }
   
   .about h2 {
