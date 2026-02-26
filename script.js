@@ -17,23 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===============================
-    // Controlo de scroll do bloco "Sobre" em mobile
-    // ===============================
-    const aboutSection = document.querySelector('.about');
-    const aboutScrollUp = document.getElementById('aboutScrollUp');
-    const aboutScrollDown = document.getElementById('aboutScrollDown');
-
-    if (aboutSection && aboutScrollUp && aboutScrollDown) {
-        aboutScrollUp.addEventListener('click', function() {
-            aboutSection.scrollBy({ top: -120, behavior: 'smooth' });
-        });
-
-        aboutScrollDown.addEventListener('click', function() {
-            aboutSection.scrollBy({ top: 120, behavior: 'smooth' });
-        });
-    }
- 
-    // ===============================
     // Sistema de cookies - Obrigatório em mobile
     // ===============================
     const cookieBanner = document.getElementById('cookie-banner');

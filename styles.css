@@ -102,10 +102,6 @@ nav a.active {
   margin-bottom: 15px;
 }
 
-.about-scroll-controls {
-  display: none;
-}
-
 .futuristic-text {
   color: #0ff;
   font-weight: bold;
@@ -625,28 +621,6 @@ footer {
     display: none; /* Chrome/Safari */
   }
 
-  .about-scroll-controls {
-    position: absolute;
-    top: 50%;
-    right: 12px;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 2;
-  }
-
-  .about-scroll-controls button {
-    width: 34px;
-    height: 34px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(0, 255, 255, 0.18);
-    color: #0ff;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.25);
-  }
   
   .about h2 {
     font-size: 1.8em;
@@ -1180,7 +1154,7 @@ footer {
   margin-top: 10px;
   font-size: 1.2rem;
   font-weight: bold;
-  color: #00e676;
+  color: #ffffff;
   text-align: center;
 }
 
@@ -1294,7 +1268,7 @@ footer {
     text-align: center;
     font-size: 1.5rem;
     font-weight: bold;
-    color: #00e676;
+    color: #ffffff;
     margin-top: 10px;
   }
 }
