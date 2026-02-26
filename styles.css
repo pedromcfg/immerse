@@ -595,16 +595,17 @@ footer {
   /* Seção sobre com margens aumentadas e texto reduzido */
   .about {
     margin: 40px 0 25px 0;
-    padding: 25px 56px 25px 20px;
+    padding: 25px 20px;
     border-radius: 10px;
     max-height: 200px;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
     position: relative;
     -ms-overflow-style: none; /* IE/Edge antigo */
     scrollbar-width: none;    /* Firefox */
     -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
   }
   
   .about::after {
@@ -681,57 +682,13 @@ footer {
     width: 100%;
   }
   
-    /* Botão Escolher Categoria (apenas mobile) */
-  .choose-category-mobile {
-    display: block; /* Mostrar apenas em mobile */
-    text-align: center;
-    margin: 30px 0 20px 0;
-    padding: 0 15px;
-  }
-  
-  /* Esconder categorias por padrão em desktop */
-  @media (min-width: 769px) {
-    .choose-category-mobile {
-      display: none;
-    }
-    .categories {
-      display: grid;
-    }
-  }
-  
-  .category-toggle-btn {
-    background: linear-gradient(135deg, #0ff 0%, #00bcd4 100%);
-    color: #000;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.1em;
-    font-weight: bold;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
-  }
-  
-  .category-toggle-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.5);
-  }
-  
-  .category-toggle-btn.active {
-    background: linear-gradient(135deg, #00bcd4 0%, #0ff 100%);
-  }
-  
-  /* Categorias em grid responsivo - escondidas por padrão em mobile */
+  /* Categorias em grid responsivo (sempre visíveis) */
   .categories {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 10px;
     padding: 15px 0;
     margin: 0;
-    display: none; /* Escondido por padrão em mobile */
-  }
-  
-  .categories.show {
-    display: grid; /* Mostrar quando ativo */
+    display: grid;
   }
   
   .categories button {
@@ -774,12 +731,6 @@ footer {
     margin: 40px 0 25px 0;
     padding: 25px 20px;
     border-radius: 10px;
-  }
-  
-  /* Botão Escolher Categoria */
-  .choose-category-mobile {
-    margin: 40px 0 25px 0;
-    padding: 0;
   }
   
   /* Categorias */
@@ -845,7 +796,7 @@ footer {
   /* Seção sobre mais compacta */
   .about {
     margin: 35px 0 20px 0;
-    padding: 20px 52px 20px 15px;
+    padding: 20px 15px;
   }
   
   .about h2 {
@@ -885,12 +836,6 @@ footer {
   .contact-form {
     margin: 35px 0 20px 0;
     padding: 20px 15px;
-  }
-  
-  /* Botão Escolher Categoria */
-  .choose-category-mobile {
-    margin: 35px 0 20px 0;
-    padding: 0;
   }
   
   /* Categorias */

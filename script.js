@@ -107,10 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===============================
     // Mostrar categoria específica
     // ===============================
-    const isMobile = window.innerWidth <= 768;
-    const categoryToggleBtn = document.getElementById('categoryToggleBtn');
     const categoriesSection = document.getElementById('categoriesSection');
-    const clearBtnMobile = document.getElementById('clearBtnMobile');
     
     window.showCategory = function(category) {
         const sections = document.querySelectorAll('.movies');
@@ -118,54 +115,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const targetSection = document.getElementById(category);
         if (targetSection) targetSection.style.display = 'grid';
         
-        // Em mobile: esconder categorias, mostrar apenas botão limpar
-        if (isMobile && categoriesSection && clearBtnMobile) {
-            categoriesSection.classList.remove('show');
-            categoriesSection.style.display = 'none';
-            clearBtnMobile.style.display = 'block';
-            if (categoryToggleBtn) {
-                categoryToggleBtn.textContent = 'Escolher Categoria';
-                categoryToggleBtn.classList.remove('active');
+        // Scroll para início da secção de filmes
+        setTimeout(() => {
+            const firstMovieSection = document.querySelector('.movies[style*="grid"], .movies:not([style*="none"])');
+            if (firstMovieSection) {
+                firstMovieSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-            
-            // Scroll para início da secção de filmes
-            setTimeout(() => {
-                const firstMovieSection = document.querySelector('.movies[style*="grid"], .movies:not([style*="none"])');
-                if (firstMovieSection) {
-                    firstMovieSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, 100);
-        }
+        }, 100);
     };
   
     window.showAllMovies = function() {
         const sections = document.querySelectorAll('.movies');
         sections.forEach(sec => sec.style.display = 'grid');
-        
-        // Em mobile: esconder botão limpar, mostrar botão escolher categoria
-        if (isMobile && clearBtnMobile && categoryToggleBtn) {
-            clearBtnMobile.style.display = 'none';
-            categoryToggleBtn.textContent = 'Escolher Categoria';
-            categoryToggleBtn.classList.remove('active');
-        }
     };
-    
-    // Toggle do botão Escolher Categoria (apenas mobile)
-    if (categoryToggleBtn && categoriesSection && isMobile) {
-        categoryToggleBtn.addEventListener('click', function() {
-            const isShowing = categoriesSection.classList.contains('show');
-            if (isShowing) {
-                categoriesSection.classList.remove('show');
-                categoriesSection.style.display = 'none';
-                this.classList.remove('active');
-            } else {
-                categoriesSection.classList.add('show');
-                categoriesSection.style.display = 'grid';
-                this.classList.add('active');
-                clearBtnMobile.style.display = 'none';
-            }
-        });
-    }
  
     // ===============================
     // Carrossel de vídeos
