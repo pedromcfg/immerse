@@ -1075,34 +1075,6 @@ footer {
   color: #ddd;
 }
 
-/* Botão de compra */
-.buy-button {
-  background-color: #00bcd4;
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  padding: 12px 30px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: 0.3s;
-  display: block;
-  margin: 0 auto;
-}
-
-.buy-button:hover {
-  background-color: #0097a7;
-  transform: scale(1.05);
-}
-
-/* Preço */
-.price {
-  margin-top: 10px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #ffffff;
-  text-align: center;
-}
-
 /* Ajuste para dispositivos móveis - Movie Container */
 @media (max-width: 768px) {
   .movie-container {
@@ -1180,57 +1152,6 @@ footer {
     display: none;
   }
 
-  /* Botão e preço - container separado em baixo da imagem */
-  .movie-buy-section {
-    width: 100%;
-    padding: 25px 20px;
-    background: #0a0a0a;
-    text-align: center;
-    display: block;
-  }
-
-  .movie-buy-section .buy-button {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto 15px auto;
-    display: block;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    background-color: #00bcd4;
-    color: #fff;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .movie-buy-section .buy-button:hover {
-    background-color: #0097a7;
-    transform: scale(1.05);
-  }
-
-  .movie-buy-section .price {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
-    margin-top: 10px;
-  }
-}
-
-/* Esconder secção de compra mobile em desktop */
-@media (min-width: 769px) {
-  .movie-buy-section {
-    display: none;
-  }
-  
-  .movie-text-overlay {
-    display: none;
-  }
-  
-  .movie-image-wrapper {
-    display: none;
-  }
 }
 
 @media (max-width: 480px) {
